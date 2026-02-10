@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.16)
 
 project(XpressiveVisualiser VERSION 0.1 LANGUAGES CXX C)
 
+if(MSVC)
+    add_compile_options(/bigobj)
+endif()
+
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -71,3 +75,4 @@ install(TARGETS XpressiveVisualiser
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(XpressiveVisualiser)
 endif()
+
