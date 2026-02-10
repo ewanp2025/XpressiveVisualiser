@@ -239,7 +239,7 @@ QVector<XpressiveTrack> parseMMP(const QString &fileName, double &outBpm) {
                 isXpressive = false;
                 currentPatternPos = 0.0;
             }
-            else if (tagName == "instrument") {
+            else if (tagName == u"instrument") {
                 if (xml.attributes().value("name") == "xpressive") isXpressive = true;
             }
             else if (tagName == "xpressive" && isXpressive) {
@@ -282,7 +282,7 @@ QVector<XpressiveTrack> parseMMP(const QString &fileName, double &outBpm) {
                 currentTrack.effects.append(effect);
             }
         }
-        else if (xml.isEndElement() && xml.name() == "pattern") {
+        else if (xml.isEndElement() && xml.name() == u"pattern") {
             currentPatternPos = 0.0;
         }
     }
@@ -683,3 +683,4 @@ int main(int argc, char *argv[]) {
     w.show();
     return a.exec();
 }
+
