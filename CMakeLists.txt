@@ -3,7 +3,11 @@ cmake_minimum_required(VERSION 3.16)
 project(XpressiveVisualiser VERSION 0.1 LANGUAGES CXX C)
 
 if(MSVC)
+    # Visual Studio flag for large object files
     add_compile_options(/bigobj)
+elseif(MINGW)
+    # MinGW/GCC flag for large object files
+    add_compile_options(-Wa,-mbig-obj)
 endif()
 
 set(CMAKE_AUTOUIC ON)
@@ -75,4 +79,5 @@ install(TARGETS XpressiveVisualiser
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(XpressiveVisualiser)
 endif()
+
 
